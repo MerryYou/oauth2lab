@@ -1,6 +1,7 @@
 package io.spring2go.implicitserver.config;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
@@ -15,8 +16,8 @@ public class OAuth2AuthorizationServer extends
     public void configure(ClientDetailsServiceConfigurer clients)
             throws Exception {
         clients.inMemory()
-            .withClient("clientapp")
-            .secret("112233")
+            .withClient("testclient")
+            .secret("{bcrypt}" + new BCryptPasswordEncoder().encode("123123"))
             .redirectUris("http://localhost:9001/callback")
             // 简化模式
             .authorizedGrantTypes("implicit")
