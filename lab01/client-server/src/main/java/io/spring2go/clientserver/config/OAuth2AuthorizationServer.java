@@ -8,8 +8,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 // 授权服务器配置
 @Configuration
 @EnableAuthorizationServer
-public class OAuth2AuthorizationServer extends
-        AuthorizationServerConfigurerAdapter {
+public class OAuth2AuthorizationServer extends AuthorizationServerConfigurerAdapter {
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients)
